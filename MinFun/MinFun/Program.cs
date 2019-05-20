@@ -17,12 +17,37 @@ using System.IO;
 
 namespace MinFun
 {
+
+	public delegate double MyDel (double x, double a);
+
 	class Program
 	{
-		// функция 
-		public static double F(double x)
+		static void Main(string[] args)
+		{
+			List<MyDel> listOfFun = new List<MyDel>();
+			listOfFun.Add(F1);
+			listOfFun.Add(F2);
+
+
+			SaveFunc("data.bin", -100, 100, 0.5);
+			Console.WriteLine(Load("data.bin"));
+			Console.ReadKey();
+		}
+
+		// функции
+		public static double F1(double x)
 		{
 				return x * x - 50 * x + 10;
+		}
+
+		public static double F2(double x, double a)
+		{
+			return a * (x * x);
+		}
+
+		public static double F3(double x, double a)
+		{
+			return a * Math.Sin(x);
 		}
 
 		// запись данных работы функции в файл
@@ -33,7 +58,7 @@ namespace MinFun
 			double x = a;
 			while (x <= b)
 			{
-				bw.Write(F(x));
+				bw.Write(F1(x));
 				x += h;  // x=x+h;
 			}
 			bw.Close();
@@ -60,14 +85,7 @@ namespace MinFun
 			return min;
 		}
 				
-		static void Main(string[] args)
-		{
-
-
-			SaveFunc("data.bin", -100, 100, 0.5);
-			Console.WriteLine(Load("data.bin"));
-			Console.ReadKey();
-		}
+		
 
 				
 			
