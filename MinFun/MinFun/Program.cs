@@ -10,9 +10,6 @@ using System.IO;
 /// Модифицировать программу нахождения минимума функции так, чтобы можно было передавать функцию в виде делегата. 
 ///а) Сделать меню с различными функциями и представить пользователю выбор, для какой функции и на каком отрезке 
 ///	  находить минимум.Использовать массив(или список) делегатов, в котором хранятся различные функции.
-///
-/// б) * Переделать функцию Load, чтобы она возвращала массив считанных значений.Пусть она возвращает минимум
-///	  через параметр(с использованием модификатора out). 
 /// </summary>
 
 namespace MinFun
@@ -93,25 +90,6 @@ namespace MinFun
 		}
 
 		//чтение данных работы функции из файла и нахождение минимум функции
-		//public static double Load(string fileName)
-		//{
-
-		//	FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
-		//	BinaryReader bw = new BinaryReader(fs);
-		//	double min = double.MaxValue;
-		//	double d;
-		//	//нахождение минимума
-		//	for (int i = 0; i < fs.Length / sizeof(double); i++)
-		//	{
-		//		//Считываем значение и переходим к следующему
-		//		d = bw.ReadDouble();
-		//		if (d < min) min = d;
-		//	}
-		//	bw.Close();
-		//	fs.Close();
-		//	return min;
-		//}
-
 		public static double Load(string fileName)
 		{
 			List<double> minimumList = new List<double>();
